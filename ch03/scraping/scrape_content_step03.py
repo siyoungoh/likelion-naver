@@ -3,11 +3,12 @@ from bs4 import BeautifulSoup
 from requests.exceptions import SSLError
 
 # 함수 설계하기
-# 1. 함수명 / 기능: scrap_content
+# 1. 함수명 / 기능: scrape_content
 # 2. input(param): url
 # 3. output(return): str content 기사본문, 없으면 빈 문자열
 
-def scrap_content(url):
+
+def scrape_content(url):
     """
     네이버 뉴스에서 기사 본문 scraping 해오기
     :param url: 네이버 뉴스 기사 url
@@ -16,8 +17,9 @@ def scrap_content(url):
     """
 
     # ==========1. GET Request==========
-    # Request 설정값(HTTP Msg) - Desktop Chrome 인 것처럼 
-    headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    # Request 설정값(HTTP Msg) - Desktop Chrome 인 것처럼
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 
     # 예외처리 후
     try:
@@ -39,8 +41,9 @@ def scrap_content(url):
             tag.decompose()
         content = sport_content.text.strip()
     elif 'news.naver.com' in url:
-        #========== news_naver ==========
-        naver_content = soup.select_one('#articeBody') or soup.select_one('#articleBodyContents')
+        # ========== news_naver ==========
+        naver_content = soup.select_one(
+            '#articeBody') or soup.select_one('#articleBodyContents')
 
         for tag in naver_content(['div', 'span', 'p', 'br', 'script']):
             tag.decompose()
@@ -48,16 +51,17 @@ def scrap_content(url):
 
     return content
 
-#=======TEST==========
+# =======TEST==========
 
 # sports.news URL
 # url = 'https://sports.news.naver.com/news.nhn?oid=382&aid=0000930543'
 # url = 'https://sports.news.naver.com/news.nhn?oid=530&aid=0000007040'
+
 
 # navernews 유형 01
 # url = 'https://news.naver.com/main/read.naver?mode=LSD&mid=sec&sid1=106&oid=008&aid=0004639637'
 # navernews 유형 02
 url = 'https://news.naver.com/main/read.naver?mode=LSD&mid=sec&sid1=103&oid=023&aid=0003637624'
 
-result = scrap_content(url)
+result = scrape_content(url)
 print(result)

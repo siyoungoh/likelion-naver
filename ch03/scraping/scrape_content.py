@@ -2,7 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 from requests.exceptions import SSLError
 
-def scrap_content(url):
+
+def scrape_content(url):
     """
     네이버 뉴스에서 기사 본문 scraping 해오기
     :param url: 네이버 뉴스 기사 url
@@ -12,9 +13,10 @@ def scrap_content(url):
     content = ''
 
     # ==========1. GET Request==========
-    # Request 설정값(HTTP Msg) - Desktop Chrome 인 것처럼 
-    headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    
+    # Request 설정값(HTTP Msg) - Desktop Chrome 인 것처럼
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+
     try:
         data = requests.get(url, headers=headers)
     except SSLError as e:
@@ -34,13 +36,14 @@ def scrap_content(url):
             tag.decompose()
         content = sport_content.text.strip()
     elif 'news.naver.com' in url:
-        #========== news_naver ==========
-        naver_content = soup.select_one('#articeBody') or soup.select_one('#articleBodyContents')
+        # ========== news_naver ==========
+        naver_content = soup.select_one(
+            '#articeBody') or soup.select_one('#articleBodyContents')
 
         for tag in naver_content(['div', 'span', 'p', 'br', 'script']):
             tag.decompose()
         content = naver_content.text.strip()
-        
+
     return content
 
 

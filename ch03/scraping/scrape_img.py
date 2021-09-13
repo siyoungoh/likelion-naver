@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from requests.exceptions import SSLError
 
 
-def scrap_image_url(url):
+def scrape_image_url(url):
     """
     웹 페이지에서 og:image 링크 scraping
     :param url: 웹 페이지 url
@@ -48,7 +48,7 @@ urls = ['https://sports.news.naver.com/news.nhn?oid=382&aid=0000930543',
 results = []
 
 for url in urls:
-    result = scrap_image_url(url)
+    result = scrape_image_url(url)
     results.append(result)
 
 print(results)

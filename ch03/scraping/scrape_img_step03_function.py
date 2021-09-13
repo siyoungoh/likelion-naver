@@ -3,24 +3,26 @@ from bs4 import BeautifulSoup
 from requests.exceptions import SSLError
 
 # 함수 설계하기
-# 1. 함수명 / 기능: scrap_image_url / url 에서 og:image saraping 해오기
+# 1. 함수명 / 기능: scrape_image_url / url 에서 og:image scraping 해오기
 # 2. input(param): url
 # 3. output(return): og:image url, 값 없으면 기본 이미지 url
 
-def scrap_image_url(url):
+
+def scrape_image_url(url):
     """
-    url 에서 og:image saraping 해오기
+    url 에서 og:image scraping 해오기
     :param url: scraping 해올 페이지 url
     :return: og:image url
     :rtype: str
     """
-    # 기본 이미지 url  설정 
+    # 기본 이미지 url  설정
     # ref : https://unsplash.com/photos/tAcoHIvCtwM
     image_url = 'https://images.unsplash.com/photo-1588492069485-d05b56b2831d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80'
 
     # ==========1. GET Request==========
-    # Request 설정값(HTTP Msg) - Desktop Chrome 인 것처럼 
-    headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    # Request 설정값(HTTP Msg) - Desktop Chrome 인 것처럼
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 
     try:
         data = requests.get(url, headers=headers)
@@ -37,8 +39,9 @@ def scrap_image_url(url):
     # 예외 - http 없는 경우 앞에 붙여주기
     if 'http' not in image_url:
         image_url = 'http:' + image_url
-    
+
     return image_url
+
 
 # ======TEST========
 # 정상 URL
@@ -49,6 +52,5 @@ def scrap_image_url(url):
 # 예외처리 필요 url
 url = 'https://news.mtn.co.kr/newscenter/news_viewer.mtn?gidx=2021090117471793052'
 
-result = scrap_image_url(url)
+result = scrape_image_url(url)
 print(result)
-
