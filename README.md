@@ -8,6 +8,7 @@
 ### [Chapter02 수업자료](ch02)
 - 네이버 클라우드 플랫폼 서버 init script 설치용 파일 [링크](ch02/server_init.sh)
 - 그 외 소스코드는 각 폴더에서 찾아보세요. [링크](ch02)
+- cloud function용 zip 파일 [링크](ch02/saveNaverNews_ch02.zip) - 우측 상단 `Download` 버튼 클릭
 
 ### [Chapter03 수업자료](ch03)
 - bootstrap theme 테마 템플릿 파일들 [링크](ch03/bootstrap-5.1.0-examples.zip)
