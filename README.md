@@ -3,6 +3,7 @@
 
 ## 목록
 - 수업을 위한 프로그램 설치 가이드 - [링크](ch02/pre-install.md)  
+- 네이버 클라우드 플랫폼 서버 / 클라우드 펑션 사용 종료가이드 - [링크](ncp/ncp_server_terminate.pdf)
 
 ### [Chapter02 수업자료](ch02)
 - 네이버 클라우드 플랫폼 서버 init script 설치용 파일 [링크](ch02/server_init.sh)
