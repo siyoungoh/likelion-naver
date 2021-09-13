@@ -28,7 +28,7 @@ sleep 15
 netstat -tnlp
 
 # setting - create user
-mongo admin --eval 'db.createUser({user: "kkk", pwd: "kkkk", roles:["root"]});'
+mongo admin --eval 'db.createUser({user: "likelion", pwd: "wearethefuture", roles:["root"]});'
 
 # replace config - bindip,security 
 sudo sh -c 'echo "security:\n  authorization: enabled" >> /etc/mongod.conf'
