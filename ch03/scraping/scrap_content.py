@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from requests.exceptions import SSLError
 
-def scrape_content(url):
+def scrap_content(url):
     """
     네이버 뉴스에서 기사 본문 scraping 해오기
     :param url: 네이버 뉴스 기사 url
