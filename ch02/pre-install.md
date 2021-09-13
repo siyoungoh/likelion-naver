@@ -51,12 +51,17 @@
   - `editor.formatOnSave" 의 값을 true 로 변경 후 저장하기(ctrl + s)
   ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fohahohah%2FvddJDwKnRi.png?alt=media&token=c0198416-8ca0-4ea0-bf5b-e70a71df5ac6) 
 
-## 4. [Windows 사용자만] Git bash 설치
+## 4. Robo3T 설치하기 
+- Mongodb 에 저장된 내용을 확인하고, 간단한 수정을 할 수 있는 프로그램. 이렇게 DB의 내용을 보거나 간단한 CRUD 를 할 수 있는 프로그램을 DB Client 라고 함. 
+- 설치 프로그램 다운로드 링크 : https://robomongo.org/download 에서 Download Robo3T 클릭
+- Winodws 7,8 의 경우, 4.2 버전을 다운로드하세요. Dowload link : https://docs.mongodb.com/manual/administration/production-notes/#prod-notes-supported-platforms
+
+## 5. [Windows 사용자만] Git bash 설치
 - 이미 Git 설치가 되어있다면 `Git bash` 라는 프로그램이 설치되어있습니다. 
 - 만약 Git 설치가 되어있지 않다면 아래 다운로드 링크에서 설치하면 됩니다. 설치 옵션은 변경하지 말고 모두 Next 버튼을 눌러 설치해주세요. 
 - 링크 https://git-scm.com/downloads
 
-## 5. 사이트 회원가입하기
+## 6. 사이트 회원가입하기
 - https://www.ncloud.com/ 에 가입 후, 수업 크레딧 받기까지 되어있으면 됩니다. 
 - 아래 사이트에 이미 가입되어있는 상태라면, 기존 계정을 사용하면 됩니다. 
 - 공공데이터포털 https://www.data.go.kr/ 에 회원가입해주세요.
