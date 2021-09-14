@@ -22,7 +22,7 @@
     pip install pymongo beautifulsoup4 requests flask 
     ```
 
-### [Chapter03 수업자료](ch04)
+### [Chapter04 수업자료](ch04)
 - Python 설치해야하는 패키지 (pip 명령어)
     ```bash 
     pip install pymongo beautifulsoup4 requests flask pytz
