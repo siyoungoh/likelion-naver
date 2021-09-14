@@ -43,7 +43,7 @@ def scrape_image_url(url):
     og_img_el = soup.select_one('meta[property="og:image"]')
 
     image_url = og_img_el['content']
-    if og_img_el is None:
+    if not og_img_el:
         return image_url
 
     if 'http' not in image_url:
@@ -64,6 +64,9 @@ def scrape_content(url):
 
     if 'sports.news.naver.com' in url:
         raw_news = soup.select_one('#newsEndContents')
+        if not raw_news:
+            return content
+
 
         for tag in raw_news(['div', 'span', 'p', 'br']):
             tag.decompose()
@@ -71,7 +74,10 @@ def scrape_content(url):
 
     elif 'news.naver.com' in url:
         raw_news = soup.select_one('#articeBody') or soup.select_one(
-            '#articleBodyContents')    #
+            '#articleBodyContents')
+        if not raw_news:
+            return content
+
         for tag in raw_news(['div', 'span', 'p', 'br', 'script']):
             tag.decompose()
 
