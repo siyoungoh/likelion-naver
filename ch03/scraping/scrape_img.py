@@ -29,8 +29,12 @@ def scrape_image_url(url):
     soup = BeautifulSoup(data.text, 'html.parser')
 
     # image url 가져오기 - og:image
-    image_url = soup.select_one('meta[property="og:image"]')['content']
+    og_img_el = soup.select_one('meta[property="og:image"]')
+    # 만약 해당 tag가 없으면 바로 기본 image_url 을 반환하고 함수 종료
+    if not og_img_el:
+        return image_url
 
+    image_url = og_img_el['content']
     # 예외 - http 없는 경우 앞에 붙여주기
     if 'http' not in image_url:
         image_url = 'http:' + image_url
