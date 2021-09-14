@@ -43,6 +43,9 @@ def scrape_image_url(url):
     og_img_el = soup.select_one('meta[property="og:image"]')
 
     image_url = og_img_el['content']
+    if og_img_el is None:
+        return image_url
+
     if 'http' not in image_url:
         image_url = 'http:' + image_url
 
