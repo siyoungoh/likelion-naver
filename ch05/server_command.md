@@ -1,6 +1,6 @@
 ## 기본 명령어
 
-- 비밀번호 변경하기
+- root 유저의 비밀번호 변경하기
 
 ```bash
 passwd root
@@ -25,6 +25,34 @@ cd ..
 
 ```bash
 cd ~
+```
+
+## mongodb 비밀번호 변경하기
+
+- 데이터베이스는 admin, 기존 사용자명은 sample, 비밀번호 1234, 권한(role)은 root 라고 가정
+- 이미 유저, 비밀번호가 걸려있기 때문에 mongo 에 접근할 때 생성된 비번으로 접속해야함이미 만들어둔 user 는 root 권한을 가지고 있어요.
+
+1. user가 sample 인걸로 접속하기
+
+```bash
+mongo -u sample
+```
+
+2. Enter password: 가 나오면 비밀번호인 1234 입력하기
+
+- 글자를 타이핑해도 화면에는 보이지 않아요.
+
+3. mongo shell 에 접속되었으면 화면 앞부분이 > 이렇게 바뀌어요.user : change, pwd 를 strongpwd 로 바꾸는 코드
+
+```bash
+use admin;
+db.createUser({user:"change", pwd: "strongpwd", roles:["root"]})
+```
+
+4. 기존에 있던 user:test 삭제해주기
+
+```bash
+ db.dropUser("sample")
 ```
 
 ## Python 파일 실행하기
