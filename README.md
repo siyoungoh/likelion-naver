@@ -2,7 +2,7 @@
 수업 자료 - 네이버 클라우드와 클로바를 활용한 인공지능 서비스 만들기 https://classlion.net/class/detail/22
 
 ## 목록
-- 수업을 위한 프로그램 설치 가이드 - [링크](ch02/pre-install.md)  
+- 수업을 위한 프로그램 설치 가이드 - [chapter02 링크](ch02/pre-install.md) / [Chapter05,06 링크](ch05/requirement.md)
 - 네이버 클라우드 플랫폼 서버 / 클라우드 펑션 사용 종료가이드 - [링크](ncp/ncp_server_terminate.pdf)
 
 ### [Chapter02 수업자료](ch02)
