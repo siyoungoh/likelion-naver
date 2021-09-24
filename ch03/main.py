@@ -9,6 +9,9 @@ from bs4 import BeautifulSoup
 def main(args):
     # name 이라는 키워드 인자(argument,arg) 를 가져옴. 없으면 World 로 대신함
     keywords = args.get('keywords', ['KOVO', '여자 배구'])
+    # 뉴스 갯수 50개로 설정 - 인자가 없으면 50으로 설정
+    display_num = args.get('display_num', 50)
+
     # place 라는 키워드 인자(argument,arg) 를 가져옴. 없으면 Naver 로 대신함
     client_id = args.get('client_id')
     client_secret = args.get('client_secret')
@@ -20,7 +23,7 @@ def main(args):
     collection_name = args.get('collection_name')
 
     # =====Naver News 정보 가져오기=====
-    docs = get_news(keywords, client_id, client_secret)
+    docs = get_news(keywords, client_id, client_secret, display_num)
 
     # ====News 를 DB 에 저장====
     result = save_to_db(host, username, password,
@@ -29,7 +32,7 @@ def main(args):
     return result
 
 
-def get_news(keywords, client_id, client_secret):
+def get_news(keywords, client_id, client_secret, display_num=50):
     """
     - 네이버 검색 뉴스 API 사용해 특정 키워드들의 뉴스 검색
     - 수집 데이터를 기반으로 Naver News 페이지 존재 여부를 
@@ -49,7 +52,6 @@ def get_news(keywords, client_id, client_secret):
         url = 'https://openapi.naver.com/v1/search/news.json'
 
         sort = 'date'  # sim: similarity 유사도, date: 날짜
-        display_num = 50
         start_num = 1
 
         params = {'display': display_num, 'start': start_num,
@@ -84,7 +86,7 @@ def get_news(keywords, client_id, client_secret):
 
                 # navernews 본문 scraping 하기
                 if item['naverNews'] == 'Y':
-                    content = scrap_content(link)
+                    content = scrape_content(link)
                     item['content'] = content if content is not '' else item['description']
                 else:
                     item['content'] = item['description']
@@ -132,19 +134,27 @@ def save_to_db(my_ip, username, password, db_name, collection_name, docs):
 
 
 def scrape_image_url(url):
-    # image : https://unsplash.com/photos/tAcoHIvCtwM
+    """
+    웹 페이지에서 og:image 링크 scraping
+    :param url: 웹 페이지 url
+    :return: og:image 링크
+    :rtype: str
+    """
+    # 기본 이미지 url  설정 / ref : https://unsplash.com/photos/tAcoHIvCtwM
     image_url = 'https://images.unsplash.com/photo-1588492069485-d05b56b2831d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80'
 
+    # ==========1. GET Request==========
     # Request 설정값(HTTP Msg) - Desktop Chrome 인 것처럼
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
 
-    # URL request 해서 HTML 코드를 response 받음.
     try:
         data = requests.get(url, headers=headers)
     except SSLError as e:
+        # print(e)
         data = requests.get(url, headers=headers, verify=False)
 
+    # ========2. 특정 요소 접근하기===========
     # BeautifulSoup4 사용해서 html 요소에 각각 접근하기 쉽게 만듦.
     soup = BeautifulSoup(data.text, 'html.parser')
 
@@ -155,40 +165,59 @@ def scrape_image_url(url):
         return image_url
 
     image_url = og_img_el['content']
+    # 예외 - http 없는 경우 앞에 붙여주기
     if 'http' not in image_url:
         image_url = 'http:' + image_url
 
     return image_url
 
 
-def scrap_content(url):
+def scrape_content(url):
+    """
+    네이버 뉴스에서 기사 본문 scraping 해오기
+    :param url: 네이버 뉴스 기사 url
+    :return content 기사본문 없으면 빈 문자열
+    :rtype: str
+    """
     content = ''
 
+    # ==========1. GET Request==========
     # Request 설정값(HTTP Msg) - Desktop Chrome 인 것처럼
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-    data = requests.get(url, headers=headers)
 
+    try:
+        data = requests.get(url, headers=headers)
+    except SSLError as e:
+        # print(e)
+        data = requests.get(url, headers=headers, verify=False)
+
+    # ========2. 특정 요소 접근하기===========
+    # BeautifulSoup4 사용해서 html 요소에 각각 접근하기 쉽게 만듦.
     soup = BeautifulSoup(data.text, 'html.parser')
+    content = ''
 
-    if 'sports.news.naver.com' in url:
-        raw_news = soup.select_one('#newsEndContents')
+    if 'sports.news.naver' in url:
+        # ======== sports_news =========
+        sport_content = soup.select_one('#newsEndContents')
+        # 해당 tag 가 존재하지 않으면 기본 content return 하고 함수 종료
+        if not sport_content:
+            return content
 
-        for tag in raw_news(['div', 'span', 'p', 'br']):
+        for tag in sport_content(['div', 'span', 'p', 'br']):
             tag.decompose()
-        content = raw_news.text.strip()
-
+        content = sport_content.text.strip()
     elif 'news.naver.com' in url:
-        raw_news = soup.select_one(
+        # ========== news_naver ==========
+        naver_content = soup.select_one(
             '#articeBody') or soup.select_one('#articleBodyContents')
 
         # 해당 tag 가 존재하지 않으면 기본 content return 하고 함수 종료
-        if not raw_news:
+        if not naver_content:
             return content
 
-        for tag in raw_news(['div', 'span', 'p', 'br', 'script']):
+        for tag in naver_content(['div', 'span', 'p', 'br', 'script']):
             tag.decompose()
-
-        content = raw_news.text.strip()
+        content = naver_content.text.strip()
 
     return content
