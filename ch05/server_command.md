@@ -157,3 +157,54 @@ ps -ef | grep python
 ```bash
 kill -9 pid값
 ```
+
+## NCP Object Storage 설정
+- 참고 : [ncloud CLI 사용법 - Object Storage](https://cli.ncloud-docs.com/docs/guide-objectstorage) / [AWS CLI 사용방법 - S3 API put bucket CORS](https://docs.aws.amazon.com/cli/latest/reference/s3api/put-bucket-cors.html)
+1. 사용 tool AWS CLI 설치하기
+  ```bash
+  pip install awscli==1.15.85
+  ```
+2. Bucket 관련 접속 설정
+  ```bash
+  aws configure
+  ```
+  - 아래와 같은 화면이 뜨면 각각에 Object storage 의 API 인증 정보 입력 - 계정 인증 API 값
+  ```bash
+  - AWS Access Key ID [****************leLy]: ACCESS_KEY_ID
+  - AWS Secret Access Key [None]: SECRET_KEY
+  - Default region name [None]: [Enter]
+  - Default output format [None]: [Enter]
+  ```
+3. 제대로 연결되어서 버킷 리스트 조회되는지 확인
+  ```bash
+  aws --endpoint-url=https://kr.object.ncloudstorage.com s3 ls
+  ```
+4. CORS 파일(예. cors.json) 업로드 와 설정
+  - 서버에 있는 설정 파일 cors.json 사용한다고 가정 (사전에 Filezilla 처럼 FTP 등을 통해 설정파일 업데이트)
+    ```json
+    {"CORSRules": [
+        {
+            "AllowedHeaders": [
+                "*"
+            ],
+            "AllowedMethods": [
+                "HEAD",
+                "GET"
+            ],
+            "AllowedOrigins": [
+                "*"
+            ],
+            "MaxAgeSeconds": 3000
+        }
+        ]
+    }
+    ```
+  - cors.json 파일 설정을 버킷에 적용
+  ```bash
+  aws --endpoint-url=https://kr.object.ncloudstorage.com s3api put-bucket-cors --bucket 내버킷이름 --cors-configuration file://cors.json
+  ```
+5. 적용 확인
+  ```bash
+  aws --endpoint-url=https://kr.object.ncloudstorage.com s3api get-bucket-cors --bucket 내버킷이름
+  ```
+  
