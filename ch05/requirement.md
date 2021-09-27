@@ -14,9 +14,11 @@
   - chatbot 사용을 위한 Facebook 페이지 및 app 생성
   - 기존 Facebook 계정을 사용해도 무방함.  
 
-
 ## 사이트 참고
 - 개인정보보호 처리방침 만들기 : https://www.privacy.go.kr/a3sc/per/inf/perInfStep01.do
+- favicon 만들기 : https://www.favicon-generator.org/
+- 카카오톡 og 태그 초기화: https://developers.kakao.com/tool/clear/og
+- 페이스북 og 태그 초기화: https://developers.facebook.com/tools/debug/
 
 ### 네이버 클라우드 플랫폼
 - 네이버 클라우드 플랫폼 페이지 : https://ncloud.com/
