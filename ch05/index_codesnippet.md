@@ -43,3 +43,16 @@ fetch(audio_url, init)
         console.log(err)
     })
 ```
+
+## og tag 설정
+```html
+<meta property="og:title" content="Hey Volleyball News" />
+<meta property="og:description" content="매일 업데이트되는 큐레이션된 배구뉴스와 음성 오디오북" />
+<meta property="og:image" content="https://images.unsplash.com/photo-1588492069485-d05b56b2831d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80" />
+```
+
+## favicon 설정
+- 참고.favicon 만들기 : https://www.favicon-generator.org/
+```html
+<link rel="shortcut icon" href="https://kr.object.ncloudstorage.com/내버킷명/asset/favicon.ico" type="image/x-icon">
+```
