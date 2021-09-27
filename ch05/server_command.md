@@ -181,6 +181,7 @@ kill -9 pid값
   ```
 4. CORS 파일(예. cors.json) 업로드 와 설정
   - 서버에 있는 설정 파일 cors.json 사용한다고 가정 (사전에 Filezilla 처럼 FTP 등을 통해 설정파일 업데이트)
+    - [cors.json](cors.json) 파일 다운로드 또는 하단 내용으로 cors.json 파일 
     ```json
     {"CORSRules": [
         {
