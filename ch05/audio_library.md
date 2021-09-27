@@ -5,6 +5,7 @@
 - 위 repository를 Download 해서 사용
 
 ## Object storage 업로드
+*실제 사용은 [NCP Object Storage 설정](server_command.md#ncp-object-storage-%EC%84%A4%EC%A0%95) 이 제대로 되어있어야 가능*
 1. Object storage 에 asset 폴더 생성
 - https://console.ncloud.com
 3. asset 폴더 안에 다운로드 받은 repo 폴더 안 dist/calamasi.min.css 와 dist/calamasi.min.js 업로드
