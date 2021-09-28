@@ -80,7 +80,7 @@ def send_news():
 
     # ======before_date 일 전 데이터 조회하기=======
     target_date = cal_datetime_utc(before_date)
-    print(f'UTC targetdate: {target_date}')
+    # print(f'UTC targetdate: {target_date}')
 
     news_items = list(collection.find(
         {'date': {'$gte': target_date['date_st'], '$lte': target_date['date_end']}}, {'_id': False}).sort('date', 1))
