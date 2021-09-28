@@ -12,6 +12,7 @@ app = Flask(__name__)
 with open('config.json', 'r') as f:
     config = json.load(f)
 bucket_info = config['BUCKET']
+storage_info = config['STORAGE']
 db_info = config['DB']
 before_date = config['BEFORE_DATE']
 # ====TEST : 설정 불러오는지 확인========
@@ -102,8 +103,8 @@ def get_storage_filelist(bucket_info, folder):
     # bucket_url : https://kr.object.ncloudstorage.com/내버킷명/
     bucket_url = endpoint_url + bucket_info['bucket_name'] + '/'
 
-    s3 = boto3.client(service_name, endpoint_url=endpoint_url, aws_access_key_id=bucket_info['access_key'],
-                      aws_secret_access_key=bucket_info['secret_key'])
+    s3 = boto3.client(service_name, endpoint_url=endpoint_url, aws_access_key_id=storage_info['access_key'],
+                      aws_secret_access_key=storage_info['secret_key'])
 
     result = []
     objects = s3.list_objects_v2(
