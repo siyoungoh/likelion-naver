@@ -29,15 +29,15 @@
   - 단, `skin.css` 파일은 하단 내용으로 변경 후에 업로드
 4. `skin.css` 파일의 277번째 줄부터 내용 아래처럼 변경
 - 실제 해당 파일의 object storage 주소로 변경해야함. 
-- 원본 파일의 `fonts` 로 적혀있는 부분을 `https://kr.object.ncloudstorage.com/내버킷명/asset/fonts` 로 변경
+- 원본 파일의 `fonts` 로 적혀있는 부분을 `https://kr.object.ncloudstorage.com/내버킷명/asset/skins/fonts/` 로 변경
 ```css
 @font-face {
   font-family: 'calamansi-skin--calamansi-compact--glyphter';
-  src: url('https://kr.object.ncloudstorage.com/내버킷명/asset/fonts/Glyphter.eot');
-  src: url('https://kr.object.ncloudstorage.com/내버킷명/asset/fonts/Glyphter.eot?#iefix') format('embedded-opentype'),
-       url('https://kr.object.ncloudstorage.com/내버킷명/asset/fonts/Glyphter.woff') format('woff'),
-       url('https://kr.object.ncloudstorage.com/내버킷명/asset/fonts/Glyphter.ttf') format('truetype'),
-       url('https://kr.object.ncloudstorage.com/내버킷명/asset/fonts/Glyphter.svg#Glyphter') format('svg');
+  src: url('https://kr.object.ncloudstorage.com/내버킷명/asset/skins/fonts/Glyphter.eot');
+  src: url('https://kr.object.ncloudstorage.com/내버킷명/asset/skins/fonts/Glyphter.eot?#iefix') format('embedded-opentype'),
+       url('https://kr.object.ncloudstorage.com/내버킷명/asset/skins/fonts/Glyphter.woff') format('woff'),
+       url('https://kr.object.ncloudstorage.com/내버킷명/asset/skins/fonts/Glyphter.ttf') format('truetype'),
+       url('https://kr.object.ncloudstorage.com/내버킷명/asset/skins/fonts/Glyphter.svg#Glyphter') format('svg');
   font-weight: normal;
   font-style: normal;
 }
