@@ -1,0 +1,15 @@
+{
+  "BUCKET": {
+    "access_key": "내 계정 access key",
+    "secret_key": "내 계정 secret key",
+    "bucket_name": "내버킷명"
+  },
+  "DB": {
+    "my_ip": "내 서버 public ip",
+    "username": "내 db 유저명",
+    "password": "내 db 비밀번호",
+    "db_name": "내 db 유저명",
+    "collection_name": "내 db collection명"
+  },
+  "BEFORE_DATE": 5
+}

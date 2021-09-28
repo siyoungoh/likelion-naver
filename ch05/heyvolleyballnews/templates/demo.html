@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- no cache -->
+    <!-- <meta http-equiv="Pragma" content="no-cache"> <!-- ← HTTP 1.0에서 사용하던 방법 -->
+    <!-- <meta http-equiv="Cache-Control" content="no-cache">
+    <!-- <meta http-equiv="Expires" content="0" /> --> --> -->
+
+
+    <title>Document</title>
+
+    <!-- calamasi css -->
+    <link rel="stylesheet" href="https://kr.object.ncloudstorage.com/내버킷명/asset/calamansi.min.css">
+</head>
+
+<body>
+    <div style="width: 300px; height: 300px;">
+        <div id="calamansi-player-1">
+            Loading player...
+        </div>
+    </div>
+
+
+    <!-- calamansi default js -->
+    <script src="https://kr.object.ncloudstorage.com/내버킷명/asset/calamansi.min.js"></script>
+
+    <script>
+        new Calamansi(document.querySelector('#calamansi-player-1'), {
+            skin: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins',
+            playlists: {
+                'News': [
+                    {
+                        source: 'https://kr.object.ncloudstorage.com/내버킷명/sound/tagmp3_2021-09-12-0.mp3',
+                    },
+                    {
+                        source: 'https://kr.object.ncloudstorage.com/내버킷명/sound/2021-09-12-1.mp3',
+                    },
+                ],
+            },
+            defaultAlbumCover: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins/default-album-cover.png',
+        });
+
+    </script>
+
+
+</body>
+
+</html>

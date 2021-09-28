@@ -1,0 +1,14 @@
+{
+  "SUMMARY_API": {
+    "client_id": "내 client id",
+    "client_secret": "내 client secret"
+  },
+  "DB": {
+    "my_ip": "내 서버 public ip",
+    "username": "내 db 유저명",
+    "password": "내 db 비밀번호",
+    "db_name": "내 db 유저명",
+    "collection_name": "내 db collection명"
+  },
+  "BEFORE_DATE": 1
+}

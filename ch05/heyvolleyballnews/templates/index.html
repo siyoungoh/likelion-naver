@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="https://kr.object.ncloudstorage.com/내버킷명/favicon.ico" type="image/x-icon">
+    <!-- meta data - og tag -->
+    <meta property="og:title" content="Hey Volleyball News" />
+    <meta property="og:description" content="매일 업데이트되는 큐레이션된 배구뉴스와 음성 오디오북" />
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1588492069485-d05b56b2831d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80" />
+    <title>Hey Volleyball news</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+        integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+        crossorigin="anonymous"></script>
+
+    <!-- calamasi css -->
+    <link rel="stylesheet" href="https://kr.object.ncloudstorage.com/내버킷명/asset/calamansi.min.css">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .white-text {
+            color: white;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .fill {
+            background-size: cover;
+            background-position: center;
+            background-image: url("https://user-images.githubusercontent.com/17819874/129415831-d03c444e-7250-42c4-98e7-94993672978d.jpg");
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <!--상단 네비게이션 토글 코드 시작-->
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">한 눈에 배구 정보 모아보기 </p>
+                    </div>
+
+
+                    <!-- Contact 정보 -->
+                    <!-- <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Contact</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                            <li><a href="#" class="text-white">Like on Facebook</a></li>
+                            <li><a href="#" class="text-white">Email me</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+                <!--상단 네비게이션 토글 코드 -->
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <strong>🏐 Hey Volleyball News</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="py-5 text-center container fill">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">Hey Volleyball News</h1>
+                    <p class="lead white-text">매일 전날의 배구 뉴스를 빠르게 배달합니다! <br> 내 손 안에 배구 큐레이션 뉴스!
+                    <div class="blue"> #한국배구 #여자배구 #V리그 #KOVO</div>
+                    </p>
+                    <p>
+                        <!-- Audio player -->
+                    <div id="calamansi-player-1">
+                        Loading player...
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div id="news" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-muted py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">Back to top</a>
+            </p>
+        </div>
+    </footer>
+    <!-- calamansi default js -->
+    <script src="https://kr.object.ncloudstorage.com/내버킷명/asset/calamansi.min.js"></script>
+    <script type="text/javascript">
+        const init = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'same-origin',
+        };
+
+        const url = '/api/news';
+
+        // API 에서 데이터 가져오기
+        fetch(url, init)
+            .then(res => {
+                if (res.status === 200) {
+                    return res.json()
+                } else {
+                    console.error(`HTTP error! status: ${res.status}`)
+                }
+            })
+            .then(jsonData => {
+                for (let i = 0; i < jsonData['news'].length; i++) {
+                    const item = jsonData['news'][i];
+                    let description = item['description'];
+                    let link = item['link'];
+                    let imageUrl = item['imageUrl'];
+
+                    let card = `<div class="col">
+                                    <div class="card shadow-sm">
+                                        <img src="${imageUrl}"
+                                            class="card-img-top" alt="...">
+
+                                        <div class="card-body">
+                                            <p class="card-text">${description}
+
+                                            </p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <a href="${link}"
+                                                        type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`
+
+
+                    let comments = document.getElementById('news');
+                    comments.insertAdjacentHTML('beforeend', card);
+
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+        // 오디오 파일 가져오기
+        const audio_url = '/api/audios';
+        fetch(audio_url, init)
+            .then(res => {
+                if (res.status === 200) {
+                    return res.json()
+                } else {
+                    console.error(`HTTP error! status: ${res.status}`)
+                }
+            })
+            .then(jsonData => {
+                // console.log(jsonData);
+
+                new Calamansi(document.querySelector('#calamansi-player-1'), {
+                    skin: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins',
+                    playlists: {
+                        'News': jsonData['audio_list']
+                    },
+                    defaultAlbumCover: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins/default-album-cover.png',
+                });
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+
+// TEST Code 
+        // new Calamansi(document.querySelector('#calamansi-player-1'), {
+        //     // skin: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins',
+        //     skin: 'https://lecture-asset.s3.ap-northeast-2.amazonaws.com/asset/skins',
+        //     playlists: {
+            //     'News': [
+            //         {
+            //             title: 'test',
+            //             source: 'https://kr.object.ncloudstorage.com/내버킷명/2021-09-12/mp3_2021-09-12-1.mp3',
+            //         },
+            //         {
+            //             title: 'test02',
+            //             source: 'https://kr.object.ncloudstorage.com/내버킷명/2021-09-12/2021-09-12-2.mp3',
+            //         },
+            //     ],
+            // },
+        //     defaultAlbumCover: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins/default-album-cover.png',
+        // });
+    </script>
+</body>
+
+</html>
