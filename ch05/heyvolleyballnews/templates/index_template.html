@@ -200,49 +200,46 @@
             })
 
         // 오디오 파일 가져오기
-        const audio_url = '/api/audios';
-        fetch(audio_url, init)
-            .then(res => {
-                if (res.status === 200) {
-                    return res.json()
-                } else {
-                    console.error(`HTTP error! status: ${res.status}`)
-                }
-            })
-            .then(jsonData => {
-                // console.log(jsonData);
+//         const audio_url = '/api/audios';
+//         fetch(audio_url, init)
+//             .then(res => {
+//                 if (res.status === 200) {
+//                     return res.json()
+//                 } else {
+//                     console.error(`HTTP error! status: ${res.status}`)
+//                 }
+//             })
+//             .then(jsonData => {
+//                 // console.log(jsonData);
 
-                new Calamansi(document.querySelector('#calamansi-player-1'), {
-                    skin: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins',
-                    playlists: {
-                        'News': jsonData['audio_list']
-                    },
-                    defaultAlbumCover: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins/default-album-cover.png',
-                });
-            })
-            .catch(err => {
-                console.log(err)
-            })
+//                 new Calamansi(document.querySelector('#calamansi-player-1'), {
+//                     skin: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins',
+//                     playlists: {
+//                         'News': jsonData['audio_list']
+//                     },
+//                     defaultAlbumCover: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins/default-album-cover.png',
+//                 });
+//             })
+//             .catch(err => {
+//                 console.log(err)
+//             })
 
 
 // TEST Code 
-        // new Calamansi(document.querySelector('#calamansi-player-1'), {
-        //     // skin: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins',
-        //     skin: 'https://lecture-asset.s3.ap-northeast-2.amazonaws.com/asset/skins',
-        //     playlists: {
-            //     'News': [
-            //         {
-            //             title: 'test',
-            //             source: 'https://kr.object.ncloudstorage.com/내버킷명/2021-09-12/mp3_2021-09-12-1.mp3',
-            //         },
-            //         {
-            //             title: 'test02',
-            //             source: 'https://kr.object.ncloudstorage.com/내버킷명/2021-09-12/2021-09-12-2.mp3',
-            //         },
-            //     ],
-            // },
-        //     defaultAlbumCover: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins/default-album-cover.png',
-        // });
+        new Calamansi(document.querySelector('#calamansi-player-1'), {
+            skin: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins',
+            playlists: {
+                'News': [
+                    {
+                        source: 'https://kr.object.ncloudstorage.com/내버킷명/2021-09-12/mp3_2021-09-12-1.mp3',
+                    },
+                    {
+                        source: 'https://kr.object.ncloudstorage.com/내버킷명/2021-09-12/2021-09-12-2.mp3',
+                    },
+                ],
+            },
+            defaultAlbumCover: 'https://kr.object.ncloudstorage.com/내버킷명/asset/skins/default-album-cover.png',
+        });
     </script>
 </body>
 
