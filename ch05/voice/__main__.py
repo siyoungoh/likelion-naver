@@ -10,7 +10,7 @@ import boto3
 
 
 def main(args):
-    voice_storage_info = args.get('VOICE_API')
+    voice_api_info = args.get('VOICE_API')
     db_info = args.get('DB')
     local_info = args.get('LOCAL')
     bucket_info = args.get('BUCKET')
@@ -18,7 +18,7 @@ def main(args):
     before_date = args.get('BEFORE_DATE')
 
     # ========TEST 하기========
-    # print(voice_storage_info)
+    # print(voice_api_info)
     # print(db_info)
     # print(bucket_info)
     # print(local_info)
@@ -78,7 +78,7 @@ def main(args):
         # =========voice 변환하기=========
         print(f'======{len(summary_contents)}======')
         # tts 로 만들기
-        result = tts(client_id=voice_storage_info['client_id'], client_secret=voice_storage_info['client_secret'],
+        result = tts(client_id=voice_api_info['client_id'], client_secret=voice_api_info['client_secret'],
                      text=summary_contents, file_folder=file_folder, file_name=file_name)
         # ========TEST 하기========
         # print(result)
