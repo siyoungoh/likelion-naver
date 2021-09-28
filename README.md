@@ -43,5 +43,12 @@
 - [서버 사용을 위한 기본 명령어 모음](ch05/server_command.md)
 - [Flask에서 오디오 플레이 위한 기본 설정](ch05/audio_library.md)
 - [index.html 코드 조각 모음](ch05/index_codesnippet.md)
+- 소스코드는 각 폴더에서 찾아보세요. [링크](ch05)
+  - 설정파일 configuration : /config_sample
+  - Flask 프로젝트 : /heyvolleyballnews
+  - 뉴스 요약 : /summary 
+    - cloud function 용 압축파일 : /summary/summaryNews.zip 
+  - 음성합성(오디오북) : /voice 
+    - cloud function 용 압축파일 : /summary/voice.zip 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />이 저작물은 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 4.0 국제 라이선스</a>에 따라 이용할 수 있습니다.
