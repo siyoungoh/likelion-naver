@@ -11,5 +11,9 @@
     "db_name": "내 db 유저명",
     "collection_name": "내 db collection명"
   },
+  "STORAGE": {
+    "access_key": "내 계정 access key",
+    "secret_key": "내 계정 secret key"
+  },
   "BEFORE_DATE": 1
 }
