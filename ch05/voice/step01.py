@@ -8,7 +8,7 @@ import requests
 import boto3
 
 # API 인증 정보
-voice_storage_info = {'client_id': "내 client_id",
+voice_api_info = {'client_id': "내 client_id",
                       'client_secret': "내 client_secret"}
 
 db_info = {'my_ip': '내 public ip', 'db_name': 'likelion', 'collection_name': 'navernews', 'username': 'likelion',
@@ -213,7 +213,7 @@ for i in range(page_num):
     # =========voice 변환하기=========
     print(f'======{len(summary_contents)}======')
     # tts 로 만들기
-    result = tts(client_id=voice_storage_info['client_id'], client_secret=voice_storage_info['client_secret'],
+    result = tts(client_id=voice_api_info['client_id'], client_secret=voice_api_info['client_secret'],
                  text=summary_contents, file_folder=file_folder, file_name=file_name)
 
     # =========Object Storage 에 업로드=========
