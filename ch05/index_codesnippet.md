@@ -3,7 +3,7 @@
 - `<head>` 부분
 ```html
 <!-- calamasi css -->
-<link rel="stylesheet" href="https://kr.object.ncloudstorage.com/likelion-naver/asset/calamansi.min.css">
+<link rel="stylesheet" href="https://kr.object.ncloudstorage.com/내버킷명/asset/calamansi.min.css">
 ```
 - `<body>` 부분
 ```html
@@ -13,7 +13,7 @@
 </div>
 
 <!-- calamansi default js -->
-<script src="https://kr.object.ncloudstorage.com/likelion-naver/asset/calamansi.min.js"></script>
+<script src="https://kr.object.ncloudstorage.com/내버킷명/asset/calamansi.min.js"></script>
 ```
 
 - `Javascript 부분`
