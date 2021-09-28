@@ -32,6 +32,11 @@
 
 
 ### [Chapter05 수업자료](ch05)
+- Python 설치해야하는 패키지 (pip 명령어)
+    ```bash 
+    pip install pymongo requests flask pytz
+    pip install boto3==1.6.19
+    ```
 - [설치하기 및 사이트 모음](ch05/requirement.md)
 - [서버 사용을 위한 기본 명령어 모음](ch05/server_command.md)
 
